@@ -1,17 +1,17 @@
 import {RequestHandler} from "express";
-import {MockDatabase} from "../../basic-node-api-foundation/infrastructure/mock-database";
-import {HeroModel} from "../../basic-node-api-foundation/model/shared/Domain/hero.model";
-import uuid from "uuid/v4"
-import {APIError, PublicInfo} from "../../basic-node-api-foundation/model/shared/messages";
-import {HeroesFilter} from "../../basic-node-api-foundation/infrastructure/heroes-filter";
+import {MockDatabase} from "../../infrastructure/mock-database";
+import {HeroModel} from "../../model/Domain/hero.model";
+import {APIError, PublicInfo} from "../../../basic-node-api-shared/middlewares/errorHandling/messages";
+import {HeroesFilter} from "../../model/heroes-filter";
 
-export class HeroRegistryController {
+export class HeroRegistryService {
     heroDatabase = new MockDatabase();
 
     apiGetHeroes: RequestHandler = (req, res, next) => {
         const filter = new HeroesFilter(req.query);
         const filteredData = this.heroDatabase.heroesList.filter((item: any) => {
             let conditions = [
+                filter.heroId ? (item.heroId == filter.heroId): true,
                 filter.heroLevelMin ? (item.heroLevel > filter.heroLevelMin): true,
                 filter.heroLevelMax ? (item.heroLevel < filter.heroLevelMax): true
             ];

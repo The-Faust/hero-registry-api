@@ -1,5 +1,5 @@
 import {RequestParamHandler} from "express";
-import {APIError} from "./messages";
+import {APIError} from "../../basic-node-api-shared/middlewares/errorHandling/messages";
 
 const dateFormat = new RegExp("(\\d{4})-(\\d{1,2})-(\\d{1,2})");
 
