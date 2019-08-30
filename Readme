@@ -1,0 +1,10 @@
+To setup a new node project
+
+    ~ npm init
+
+    ~ tsc -init
+
+    ~ npm install express
+
+for middleware resources:
+  http://expressjs.com/en/resources/middleware.html
