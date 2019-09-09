@@ -1,5 +1,5 @@
-import {HeroModel} from "../model/shared/Domain/hero.model";
-import {Guid} from "guid-typescript";
+
+import {HeroModel} from "../model/Domain/hero.model";
 
 export class MockDatabase {
     public heroesList: HeroModel[] = [
